@@ -1,0 +1,34 @@
+
+syntax = "proto3";
+package asynctask;
+
+option go_package = "AsyncTask/proto";
+
+// TaskMessage is the internal representation of a task with additional
+// metadata fields.
+message TaskMessage {
+	// Type indicates the kind of the task to be performed.
+  string type = 1;
+
+	// Payload holds data needed to process the task.
+  bytes payload = 2;
+
+	// Unique identifier for the task.
+  string id = 3;
+
+	// Name of the queue to which this task belongs.
+  string queue = 4;
+
+	// Error message from the last failure.
+  string error_msg = 5;
+
+	// Timeout specifies timeout in seconds.
+	// Use zero to indicate no timeout.
+  int64 timeout = 6;
+
+	// Deadline specifies the deadline for the task in Unix time,
+	// the number of seconds elapsed since January 1, 1970 UTC.
+	// Use zero to indicate no deadline.
+  int64 deadline = 7;
+
+};
